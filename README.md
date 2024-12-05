@@ -151,7 +151,3 @@ ISC
 3. Зафиксируйте изменения (`git commit -m 'Add some amazing feature'`)
 4. Отправьте изменения в ваш форк (`git push origin feature/amazing-feature`)
 5. Откройте Pull Request
-
-## Авторы
-
-* **Ваше имя** - *Начальная работа* - [ВашGitHub](https://github.com/ваш_профиль)
