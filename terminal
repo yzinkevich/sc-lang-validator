@@ -1,0 +1,18 @@
+npm init -y
+npm install --save-dev electron electron-builder typescript react react-dom @types/react @types/react-dom @types/node
+npm install --save-dev @emotion/react @emotion/styled
+npm install --save-dev webpack webpack-cli webpack-dev-server
+npm install --save-dev @babel/core @babel/preset-react @babel/preset-typescript
+npm install --save-dev html-webpack-plugin
+npm install --save-dev babel-loader @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript
+npm install --save-dev @mui/material @mui/icons-material
+npm install --save-dev @mui/lab
+npm install --save-dev @mui/styled-engine-sc styled-components
+npm install --save-dev @babel/runtime @babel/plugin-transform-runtime
+mv webpack.config.js webpack.renderer.config.js
+rm -rf node_modules package-lock.json
+npm install --save @mui/material @mui/icons-material @emotion/react @emotion/styled
+npm install
+npm run build
+npm install --save-dev concurrently cross-env
+npm install --save-dev wait-on

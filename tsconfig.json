@@ -2,7 +2,15 @@
   "compilerOptions": {
     "target": "ES6",
     "module": "CommonJS",
-    "lib": ["DOM", "ES6", "DOM.Iterable", "ScriptHost", "ES2016.Array.Include"],
+    "lib": [
+      "DOM",
+      "ES6",
+      "DOM.Iterable",
+      "ScriptHost",
+      "ES2016.Array.Include",
+      "ES2015",
+      "ES2017"
+    ],
     "jsx": "react",
     "strict": true,
     "esModuleInterop": true,
@@ -12,8 +20,21 @@
     "allowJs": true,
     "moduleResolution": "node",
     "baseUrl": ".",
-    "outDir": "dist"
+    "paths": {
+      "@mui/*": ["node_modules/@mui/*"],
+      "@emotion/*": ["node_modules/@emotion/*"]
+    },
+    "outDir": "dist",
+    "noImplicitAny": false,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/renderer/types"
+    ],
+    "types": ["electron", "node"]
   },
-  "include": ["src/**/*"],
+  "include": [
+    "src/**/*",
+    "node_modules/electron/electron.d.ts"
+  ],
   "exclude": ["node_modules"]
 } 

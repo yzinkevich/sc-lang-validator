@@ -2,6 +2,9 @@ import { app, BrowserWindow, ipcMain, dialog } from 'electron';
 import * as path from 'path';
 import * as fs from 'fs/promises';
 
+declare const __dirname: string;
+declare const process: NodeJS.Process;
+
 function createWindow() {
   console.log('Creating window...');
   const mainWindow = new BrowserWindow({
@@ -62,10 +65,10 @@ ipcMain.handle('validate-files', async (event, directoryPath: string, keys: stri
   try {
     const files = await fs.readdir(directoryPath);
     const langFiles = files
-      .filter(file => file.startsWith('lang_') && file.endsWith('.json'))
-      .filter(file => !IGNORED_LANG_FILES.includes(file));
+      .filter((file: string) => file.startsWith('lang_') && file.endsWith('.json'))
+      .filter((file: string) => !IGNORED_LANG_FILES.includes(file));
     
-    const results = await Promise.all(langFiles.map(async (file) => {
+    const results = await Promise.all(langFiles.map(async (file: string) => {
       const filePath = path.join(directoryPath, file);
       const content = await fs.readFile(filePath, 'utf-8');
       const translations = JSON.parse(content);
