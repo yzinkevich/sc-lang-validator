@@ -4,7 +4,7 @@
 ![Version](https://img.shields.io/badge/version-1.0.0-green.svg)
 ![Node](https://img.shields.io/badge/node-%3E%3D14.0.0-brightgreen.svg)
 
-Приложение для проверки наличия и заполненности ключей локализации в JSON файлах.
+Приложение для проверки наличия ключей и переводов для них в JSON файлах (для проектных целей).
 
 ## Установка и запуск
 
