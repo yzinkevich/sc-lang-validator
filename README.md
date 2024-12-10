@@ -1,9 +1,5 @@
 # Валидатор локализации
 
-![License](https://img.shields.io/badge/license-ISC-blue.svg)
-![Version](https://img.shields.io/badge/version-1.0.0-green.svg)
-![Node](https://img.shields.io/badge/node-%3E%3D14.0.0-brightgreen.svg)
-
 Приложение для проверки наличия ключей и переводов для них в JSON файлах (для проектных целей).
 
 ## Установка и запуск
@@ -138,25 +134,3 @@ npm run rebuild      # Полная пересборка
 npm start           # Запуск приложения
 npm run start:debug # Запуск с отладкой
 ```
-
-### Структура проекта
-```
-src/
-  ├── main/         # Основной процесс Electron
-  ├── renderer/     # React приложение
-  └── preload/      # Preload скрипты
-```
-
-## Лицензия
-ISC
-
-## Поддержка
-При возникновении проблем или предложений по улучшению, создавайте issue в репозитории проекта.
-
-## Вклад в проект
-
-1. Форкните репозиторий
-2. Создайте ветку для вашей фичи (`git checkout -b feature/amazing-feature`)
-3. Зафиксируйте изменения (`git commit -m 'Add some amazing feature'`)
-4. Отправьте изменения в ваш форк (`git push origin feature/amazing-feature`)
-5. Откройте Pull Request
