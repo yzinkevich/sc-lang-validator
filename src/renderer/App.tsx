@@ -63,7 +63,21 @@ interface DuplicateInfo {
 }
 
 const App: React.FC = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    try {
+      const savedTheme = localStorage.getItem('theme');
+      return savedTheme ? savedTheme === 'dark' : true;
+    } catch {
+      return true;
+    }
+  });
+
+  const handleThemeChange = () => {
+    const newTheme = !darkMode;
+    setDarkMode(newTheme);
+    localStorage.setItem('theme', newTheme ? 'dark' : 'light');
+  };
+
   const [selectedDirectory, setSelectedDirectory] = useState<string>('');
   const [showAllKeys, setShowAllKeys] = useState(false);
   const [recentDirectories, setRecentDirectories] = useState<string[]>(() => {
@@ -237,7 +251,7 @@ const App: React.FC = () => {
           <Typography variant="h4" component="h1" gutterBottom>
             Валидатор ключей
           </Typography>
-          <IconButton onClick={() => setDarkMode(!darkMode)} color="inherit">
+          <IconButton onClick={handleThemeChange} color="inherit">
             {darkMode ? <LightMode /> : <DarkMode />}
           </IconButton>
         </Box>
