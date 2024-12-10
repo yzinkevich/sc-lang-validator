@@ -1,0 +1,29 @@
+.view-mode-switcher {
+  margin-bottom: 20px;
+}
+
+.view-mode-switcher label {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.key-result {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.key-result h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.key-result ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.key-result li {
+  color: #e74c3c;
+} 

@@ -61,15 +61,19 @@ ipcMain.handle('select-directory', async () => {
 
 const IGNORED_LANG_FILES = ['lang_longlish.json', 'lang_comment.json'];
 
-ipcMain.handle('validate-files', async (event, directoryPath: string, keys: string[]) => {
+async function validateFiles(directory: string, keys: string[]) {
   try {
-    const files = await fs.readdir(directoryPath);
+    const files = await fs.readdir(directory);
     const langFiles = files
       .filter((file: string) => file.startsWith('lang_') && file.endsWith('.json'))
       .filter((file: string) => !IGNORED_LANG_FILES.includes(file));
     
+    if (langFiles.length === 0) {
+      throw new Error('NO_JSON_FILES');
+    }
+
     const results = await Promise.all(langFiles.map(async (file: string) => {
-      const filePath = path.join(directoryPath, file);
+      const filePath = path.join(directory, file);
       const content = await fs.readFile(filePath, 'utf-8');
       const translations = JSON.parse(content);
       
@@ -88,8 +92,33 @@ ipcMain.handle('validate-files', async (event, directoryPath: string, keys: stri
     }));
     
     return results;
+  } catch (error: unknown) {
+    if (error instanceof Error && error.message === 'NO_JSON_FILES') {
+      throw error;
+    }
+    throw new Error('VALIDATION_ERROR');
+  }
+}
+
+ipcMain.handle('validate-files', async (event, directoryPath: string, keys: string[]) => {
+  try {
+    return await validateFiles(directoryPath, keys);
   } catch (error) {
     console.error('Error validating files:', error);
+    throw error;
+  }
+});
+
+ipcMain.handle('check-directory', async (_, directory: string) => {
+  try {
+    const files = await fs.readdir(directory);
+    const langFiles = files
+      .filter(file => file.startsWith('lang_') && file.endsWith('.json'))
+      .filter(file => !IGNORED_LANG_FILES.includes(file));
+    
+    return langFiles.length > 0;
+  } catch (error) {
+    console.error('Error checking directory:', error);
     throw error;
   }
 });

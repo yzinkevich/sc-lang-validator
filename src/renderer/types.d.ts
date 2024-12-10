@@ -7,6 +7,7 @@ declare global {
         missingKeys: string[];
         emptyTranslations: string[];
       }[]>;
+      checkDirectory: (directory: string) => Promise<boolean>;
     }
   }
 }

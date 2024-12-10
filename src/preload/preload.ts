@@ -16,5 +16,8 @@ contextBridge.exposeInMainWorld('electron', {
       console.error('Error in validateFiles:', error);
       throw error;
     }
-  }
+  },
+  checkDirectory: async (directory: string) => {
+    return await ipcRenderer.invoke('check-directory', directory);
+  },
 }); 
