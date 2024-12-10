@@ -11,17 +11,26 @@
 ### Требования
 - Node.js (версия 14 или выше)
 - npm (устанавливается вместе с Node.js)
+- Git
 
 ### Первый запуск 
-1. Установка зависимостей
+1. Клонирование репозитория
+```bash
+git clone https://github.com/yzinkevich/sc-lang-validator
+cd sc-lang-validator
+```
+
+2. Установка зависимостей
 ```bash
 npm install
 ```
-2. Сборка приложения
+
+3. Сборка приложения
 ```bash
 npm run build
 ``` 
-3. Запуск приложения
+
+4. Запуск приложения
 ```bash
 npm start
 ``` 
